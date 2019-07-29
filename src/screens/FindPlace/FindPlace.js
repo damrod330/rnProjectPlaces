@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 import PlaceList from "../../components/PlaceList/PlaceList";
 
 class FindPlaceScreen extends Component {
+  static navigatorStyle = {
+    navBarButtonColor: "orange"
+  };
+
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
@@ -19,24 +23,26 @@ class FindPlaceScreen extends Component {
     }
   };
 
-
   itemSelectedHandler = key => {
     const selectedPlace = this.props.places.find(place => {
-      return place.key === key
-    })
+      return place.key === key;
+    });
     this.props.navigator.push({
-      screen: 'rnProjectPlaces.PlaceDetailScreen',
+      screen: "rnProjectPlaces.PlaceDetailScreen",
       title: selectedPlace.name,
       passProps: {
         selectedPlace: selectedPlace
       }
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <View>
-        <PlaceList places={this.props.places} onItemSelected={this.itemSelectedHandler}/>
+        <PlaceList
+          places={this.props.places}
+          onItemSelected={this.itemSelectedHandler}
+        />
       </View>
     );
   }
