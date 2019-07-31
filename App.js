@@ -13,7 +13,9 @@ const store = configureStore();
 // Register Screens
 Navigation.registerComponent(
   "rnProjectPlaces.AuthScreen",
-  () => AuthScreen
+  () => AuthScreen,
+  store,
+  Provider
 );
 Navigation.registerComponent(
   "rnProjectPlaces.SharePlaceScreen",
